@@ -10,7 +10,7 @@ const TweetForm = () => {
   return (
     <div className="border-b border-silver p-4 space-y-4">
       <div className="flex p-4 space-x-5">
-        <img src="/src/imgs/avatar1.svg" className="w-7" alt="My avatar"/>
+        <img src="./src/imgs/avatar1.svg" className="w-7" alt="My avatar"/>
         <h1 className="font-bold text-xl">Página inicial</h1>
       </div>
       <form className="flex flex-col pl-12 text-lg">
@@ -36,12 +36,12 @@ const TweetForm = () => {
 const Tweet = ({ name, username, avatar, verified, followers, children }) => {
   return (
     <div className="flex items-center space-x-3 p-4 border-b border-silver">
-      <img src={"/src/imgs/" + avatar + ".svg"} width="48" alt={name}/>
+      <img src={"./src/imgs/" + avatar + ".svg"} width="48" alt={name}/>
       <div className="space-y-1">
         <div className="flex space-x-1 text-sm">
           <span className="font-bold">{name}</span>
           {verified === "yes" &&
-            <img src="/src/imgs/verified.svg" alt="Verified user" width="16"/>
+            <img src="./src/imgs/verified.svg" alt="Verified user" width="16"/>
           }
           <span className="text-silver">@{username}</span>
         </div>
