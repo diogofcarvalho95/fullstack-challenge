@@ -2,7 +2,7 @@
 
 Twitter mini-clone.
 
-Frontend stack: React + Tailwind CSS + Heroicons.<br>
+Frontend stack: Vite + React + Tailwind CSS.<br>
 Backend stack: NodeJS + Prisma + MongoDB.
 
 Demo: [https://twitter-mini-clone.vercel.app/](https://twitter-mini-clone.vercel.app/)
