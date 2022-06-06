@@ -85,6 +85,7 @@ router.post('/signup', async ctx => {
       ctx.body = 'Email ou username já existe.'
       return
     }
+    console.log(error)
     ctx.status = 500
     ctx.body = 'Internal Error'
   }
