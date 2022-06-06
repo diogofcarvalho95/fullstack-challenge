@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { HeartIcon } from '@heroicons/react/outline'
 import { useFormik} from 'formik'
 import axios from 'axios'
-import avatar from './imgs/avatar1.svg'
+import avatar from '/imgs/avatar1.svg'
 
 const MAX_TWEET_CHAR = 140
 
@@ -52,11 +52,11 @@ function TweetForm({ loggedInUser, onSuccess }) {
 
         <div className="flex justify-end items-center space-x-3">
           <span className="text-sm">
-            <span>{formik.values.text.length}</span> / <span className="text-birdBlue">{ MAX_TWEET_CHAR }</span>
+            <span>{formik.values.text.length}</span> / <span className="text-blue">{ MAX_TWEET_CHAR }</span>
           </span>
           <button
             type="submit"
-            className="bg-birdBlue px-5 py-2 rounded-full disabled:opacity-50"
+            className="bg-blue px-5 py-2 rounded-full disabled:opacity-50"
             disabled={formik.values.text.length > MAX_TWEET_CHAR || formik.isSubmitting }
           >
             Tweet
@@ -91,7 +91,6 @@ function Tweet({ name, username, avatar, children }) {
 
 export function Home({ loggedInUser }) {
   const [data, setData] = useState([])
-
 
   async function getData() {
     const res = await axios.get(`${import.meta.env.VITE_API_HOST}/tweets`, {

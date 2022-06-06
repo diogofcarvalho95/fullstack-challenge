@@ -34,7 +34,7 @@ export function Signup({ signInUser }) {
     })
 
     return (
-        <div className="h-full flex flex-col justify-center p-12 space-y-6">
+        <div className="min-h-screen flex flex-col justify-center p-12 space-y-6">
             <h1 className="text-3xl">Crie sua conta</h1>
 
             <form className="space-y-6" onSubmit={formik.handleSubmit}>
@@ -101,7 +101,7 @@ export function Signup({ signInUser }) {
 
                 <button
                     type="submit"
-                    className="w-full bg-birdBlue py-4 rounded-full disabled:opacity-50 text-lg"
+                    className="w-full bg-blue py-4 rounded-full disabled:opacity-50 text-lg"
                     disabled={formik.isSubmitting || !formik.isValid}
                 >
                     {formik.isSubmitting ? 'Enviando...' : 'Cadastrar' }
@@ -109,7 +109,7 @@ export function Signup({ signInUser }) {
             </form>
 
             <span className="text-sm text-silver text-center">
-                Já tem uma conta? <a className="text-birdBlue" href="/login">Acesse.</a>
+                Já tem uma conta? <a className="text-blue" href="/login">Acesse.</a>
             </span>
         </div>
     )

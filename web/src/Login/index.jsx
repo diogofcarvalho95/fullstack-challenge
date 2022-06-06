@@ -33,8 +33,8 @@ export function Login({ signInUser }) {
     })
 
     return (
-        <div className="h-full flex justify-center">
-            <div className="bg-birdBlue lg:flex-1"></div>
+        <div className="min-h-screen flex justify-center">
+            <div className="bg-blue lg:flex-1"></div>
             <div className="flex-1 flex justify-center items-center p-12 space-y-6">
                 <div className="max-w-md flex-1">
                     <h1 className="text-3xl">Acesse sua conta</h1>
@@ -73,7 +73,7 @@ export function Login({ signInUser }) {
 
                         <button
                             type="submit"
-                            className="w-full bg-birdBlue py-4 rounded-full disabled:opacity-50 text-lg"
+                            className="w-full bg-blue py-4 rounded-full disabled:opacity-50 text-lg"
                             disabled={formik.isSubmitting || !formik.isValid}
                         >
                             {formik.isSubmitting ? 'Enviando...' : 'Entrar' }
@@ -81,7 +81,7 @@ export function Login({ signInUser }) {
                     </form>
 
                     <span className="text-sm text-silver text-center">
-                        Não tem conta? <a className="text-birdBlue" href="/signup">Inscreva-se</a>
+                        Não tem conta? <a className="text-blue" href="/signup">Inscreva-se</a>
                     </span>
                 </div>
             </div>
