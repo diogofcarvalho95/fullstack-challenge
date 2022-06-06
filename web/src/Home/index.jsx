@@ -7,7 +7,7 @@ function TweetForm ({loggedInUser, onSuccess}) {
   const MAX_TWEET_CHAR = 250;
   const formik = useFormik({
     onSubmit: async (values, form) => {
-      await axios.post(`${import.meta.env.VITE_API_HOST}/tweets`, {
+      await axios.post(`${import.meta.env.VITE_API_HOST}tweets`, {
         text: values.text
       }, {
         headers: {
@@ -81,7 +81,7 @@ export function Home ({ loggedInUser }) {
   const [data, setData] = useState([])
 
   async function getData() {
-    const res = await axios.get(`${import.meta.env.VITE_API_HOST}/tweets`, {
+    const res = await axios.get(`${import.meta.env.VITE_API_HOST}tweets`, {
       headers: {
         'authorization': `Bearer ${loggedInUser.accessToken}`
       }
