@@ -1,5 +1,7 @@
 import Router from '@koa/router'
-import { PrismaClient } from '@prisma/client'
+import {
+  PrismaClient
+} from '@prisma/client'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
@@ -8,10 +10,9 @@ export const router = new Router()
 const prisma = new PrismaClient()
 
 router.get('/tweets', async ctx => {
-
   const [, token] = ctx.request.headers?.authorization?.split(' ') || []
 
-  if(!token){
+  if (!token) {
     ctx.status = 401
     return
   }
@@ -25,16 +26,21 @@ router.get('/tweets', async ctx => {
     })
     ctx.body = tweets
   } catch (error) {
-    ctx.status = 401
+
+    if (typeof error === 'JsonWebTokenError') {
+      ctx.status = 401
+      return
+    }
+
+    ctx.status = 500
     return
   }
-
 })
 
-router.post ('/tweets', async ctx => {
+router.post('/tweets', async ctx => {
   const [, token] = ctx.request.headers?.authorization?.split(' ') || []
 
-  if(!token){
+  if (!token) {
     ctx.status = 401
     return
   }
@@ -47,6 +53,7 @@ router.post ('/tweets', async ctx => {
         text: ctx.request.body.text
       }
     })
+
     ctx.body = tweet
   } catch (error) {
     ctx.status = 401
@@ -70,7 +77,9 @@ router.post('/signup', async ctx => {
 
     const accessToken = jwt.sign({
       sub: user.id
-    }, process.env.JWT_SECRET, { expiresIn: '24h' })
+    }, process.env.JWT_SECRET, {
+      expiresIn: '24h'
+    })
 
     ctx.body = {
       id: user.id,
@@ -80,14 +89,14 @@ router.post('/signup', async ctx => {
       accessToken
     }
   } catch (error) {
-    if(error.meta && !error.meta.target) {
+    if (error.meta && !error.meta.target) {
       ctx.status = 422
-      ctx.body = 'Email ou username já existe.'
+      ctx.body = "Email ou nome de usuário já existe."
       return
     }
-    console.log(error)
+
     ctx.status = 500
-    ctx.body = 'Internal Error'
+    ctx.body = 'Internal error'
   }
 })
 
@@ -96,20 +105,24 @@ router.get('/login', async ctx => {
   const [email, plainTextPassword] = Buffer.from(token, 'base64').toString().split(':')
 
   const user = await prisma.user.findUnique({
-    where: { email }
+    where: {
+      email
+    }
   })
 
-  if(!user) {
+  if (!user) {
     ctx.status = 404
     return
   }
 
-  const passwordMatch = bcrypt.compareSync(plainTextPassword, user.password);
+  const passwordMatch = bcrypt.compareSync(plainTextPassword, user.password)
 
-  if(passwordMatch) {
+  if (passwordMatch) {
     const accessToken = jwt.sign({
       sub: user.id
-    }, process.env.JWT_SECRET, { expiresIn: '24h' })
+    }, process.env.JWT_SECRET, {
+      expiresIn: '24h'
+    })
 
     ctx.body = {
       id: user.id,
@@ -118,6 +131,7 @@ router.get('/login', async ctx => {
       email: user.email,
       accessToken
     }
+
     return
   }
 
