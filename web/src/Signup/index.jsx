@@ -47,6 +47,7 @@ export function Signup({ signInUser }) {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 disabled={formik.isSubmitting}
+                autocomplete="off"
               />
               {(formik.touched.name && formik.errors.name) && (
                 <span className="text-red-500 text-sm">{formik.errors.name}</span>
@@ -61,6 +62,7 @@ export function Signup({ signInUser }) {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 disabled={formik.isSubmitting}
+                autocomplete="off"
               />
               {(formik.touched.username && formik.errors.username) && (
                 <span className="text-red-500 text-sm">{formik.errors.username}</span>
@@ -75,6 +77,7 @@ export function Signup({ signInUser }) {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 disabled={formik.isSubmitting}
+                autocomplete="off"
               />
               {(formik.touched.email && formik.errors.email) && (
                 <span className="text-red-500 text-sm">{formik.errors.email}</span>
@@ -89,6 +92,7 @@ export function Signup({ signInUser }) {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 disabled={formik.isSubmitting}
+                autocomplete="off"
               />
               {(formik.touched.password && formik.errors.password) && (
                 <span className="text-red-500 text-sm">{formik.errors.password}</span>

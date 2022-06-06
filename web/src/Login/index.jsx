@@ -45,6 +45,7 @@ export function Login({ signInUser }) {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 disabled={formik.isSubmitting}
+                autocomplete="off"
               />
               {(formik.touched.email && formik.errors.email) && (
                 <span className="text-red-500 text-sm">{formik.errors.email}</span>
@@ -59,6 +60,7 @@ export function Login({ signInUser }) {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 disabled={formik.isSubmitting}
+                autocomplete="off"
               />
               {(formik.touched.password && formik.errors.password) && (
                 <span className="text-red-500 text-sm">{formik.errors.password}</span>
