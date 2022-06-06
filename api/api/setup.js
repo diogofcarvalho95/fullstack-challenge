@@ -4,7 +4,7 @@ import cors from '@koa/cors'
 
 import { router } from './routers.js'
 
-const app = new Koa()
+export const app = new Koa()
 
 const options = {
   origin: '*'
