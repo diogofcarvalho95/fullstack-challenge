@@ -8,4 +8,4 @@
     "source": "/(.*)",
     "destination": "/api"
   }]
-},
+}
